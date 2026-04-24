@@ -1,11 +1,11 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ develop, main ]
 
 jobs:
-  test-and-lint:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,3 +32,20 @@ jobs:
     - name: Run tests with pytest
       run: |
         pytest test_cart.py -v
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Trigger Render Deployment
+      # This step triggers your deployment using a Render Deploy Hook.
+      # You need to create a Deploy Hook in your Render dashboard and save it 
+      # as a Repository Secret named RENDER_DEPLOY_HOOK_URL in GitHub.
+      run: |
+        echo "Triggering deployment to Render..."
+        curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}

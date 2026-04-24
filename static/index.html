@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --dark-text: #2d3436;
+            --light-text: #fdfbfb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            padding: 20px;
+            color: var(--dark-text);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cart-icon {
+            font-size: 4rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .team-badge {
+            display: inline-block;
+            background: var(--dark-text);
+            color: var(--light-text);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .functions-box {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .functions-box h2 {
+            font-size: 1.2rem;
+            color: #636e72;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+            font-size: 0.95rem;
+            color: #0984e3;
+            border-left: 4px solid transparent;
+        }
+
+        li:hover {
+            transform: translateX(5px);
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left-color: var(--primary-color);
+        }
+
+        .emoji-icon {
+            font-size: 1.2rem;
+            margin-right: 12px;
+            background: #fff;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #b2bec3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #4cd137;
+            border-radius: 50%;
+            animation: pulsing 1.5s infinite;
+        }
+
+        @keyframes pulsing {
+            0% { box-shadow: 0 0 0 0 rgba(76, 209, 55, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(76, 209, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 209, 55, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="cart-icon">🛒</div>
+            <h1>Shopping Cart Project</h1>
+            <div class="team-badge">Team: ShimmeringStars 🌟</div>
+        </div>
+
+        <div class="functions-box">
+            <h2><span style="font-size: 1.2rem;">🧪</span> Test Suite Coverage</h2>
+            <ul>
+                <li><span class="emoji-icon">➕</span> <code>add_item(name, price, qt)</code></li>
+                <li><span class="emoji-icon">🗑️</span> <code>remove_item(name)</code></li>
+                <li><span class="emoji-icon">🎟️</span> <code>apply_discount(code)</code></li>
+                <li><span class="emoji-icon">💰</span> <code>get_total()</code></li>
+                <li><span class="emoji-icon">🧹</span> <code>clear()</code></li>
+                <li><span class="emoji-icon">🔢</span> <code>get_item_count()</code></li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <span class="pulse"></span>
+            <p>Deployed automatically via CD pipeline</p>
+        </div>
+    </div>
+
+</body>
+</html>
