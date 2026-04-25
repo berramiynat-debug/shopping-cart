@@ -31,7 +31,7 @@ jobs:
 
     - name: Run tests with pytest
       run: |
-        pytest test_cart.py -v
+        pytest test_cart.py -v --cov=cart --cov-report=term-missing --cov-fail-under=70
 
   deploy:
     needs: test
